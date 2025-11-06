@@ -1,0 +1,194 @@
+{% comment %}
+  Dealer Registration Form Section
+  Created by Satish for REVO Dealer Signup
+{% endcomment %}
+
+<section class="dealer-registration-form page-width">
+  <h2 class="title">{{ section.settings.form_title }}</h2>
+  <p class="mb-4 text-sm italic">
+    *Subject to the execution of and terms and conditions of the standard REVO Authorized Dealer Agreement
+  </p>
+
+  {% comment %} <form method="post" action="{{ routes.account_url }}" id="dealer_register_form" accept-charset="UTF-8"> {% endcomment %}
+   <form method="post" action="{{ routes.account_url }}?return_url=/pages/wholesale" id="dealer_register_form" accept-charset="UTF-8">
+
+  <input type="hidden" name="form_type" value="create_customer">
+    <input type="hidden" name="utf8" value="✓">
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label>First Name</label>
+        <input type="text" name="customer[first_name]" required>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input type="text" name="customer[last_name]" required>
+      </div>
+      <div class="col-span-2">
+        <label>Business Name</label>
+        <input type="text" name="customer[note][business_name]" required>
+      </div>
+      <div class="col-span-2">
+        <label>Type of Business</label>
+        <input type="text" name="customer[note][business_type]">
+      </div>
+      <div class="col-span-2">
+        <label>Address</label>
+        <input type="text" name="customer[note][address]">
+      </div>
+      <div>
+        <label>City</label>
+        <input type="text" name="customer[note][city]">
+      </div>
+      <div>
+        <label>State</label>
+        <input type="text" name="customer[note][state]">
+      </div>
+      <div>
+        <label>Zip Code</label>
+        <input type="text" name="customer[note][zip]">
+      </div>
+      <div>
+        <label>Phone</label>
+        <input type="text" name="customer[note][phone]">
+      </div>
+      <div class="col-span-2">
+        <label>Projected Annual Sales</label>
+        <input type="text" name="customer[note][sales_projection]">
+      </div>
+      <div class="col-span-2">
+        <label>Security Systems</label>
+        <input type="text" name="customer[note][security_systems]">
+      </div>
+      <div class="col-span-2">
+        <label>Security Cameras</label>
+        <input type="text" name="customer[note][security_cameras]">
+      </div>
+      <div class="col-span-2">
+        <label>Recorders</label>
+        <input type="text" name="customer[note][recorders]">
+      </div>
+      <div class="col-span-2">
+        <label>Accessories</label>
+        <input type="text" name="customer[note][accessories]">
+      </div>
+      <div class="col-span-2">
+        <label>Email</label>
+        <input type="email" name="customer[email]" required>
+      </div>
+      <div class="col-span-2">
+        <label>Password</label>
+        <input type="password" name="customer[password]" required>
+      </div>
+      <div class="col-span-2">
+        <label>Additional Notes</label>
+        <textarea name="customer[note][additional_notes]" rows="3"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="btn mt-4">Submit</button>
+  </form>
+
+  <div id="dealer-success" style="display:none; margin-top: 15px;">
+    <p>✅ Thank you for registering as a dealer. Our team will review and approve your account shortly.</p>
+  </div>
+</section>
+
+{% comment %} <script>
+  document.getElementById('dealer_register_form').addEventListener('submit', function(e) {
+    const form = e.target;
+    const notes = `
+Business Name: ${form.querySelector('[name="customer[note][business_name]"]').value}
+Type of Business: ${form.querySelector('[name="customer[note][business_type]"]').value}
+Address: ${form.querySelector('[name="customer[note][address]"]').value}
+City: ${form.querySelector('[name="customer[note][city]"]').value}
+State: ${form.querySelector('[name="customer[note][state]"]').value}
+Zip: ${form.querySelector('[name="customer[note][zip]"]').value}
+Phone: ${form.querySelector('[name="customer[note][phone]"]').value}
+Projected Annual Sales: ${form.querySelector('[name="customer[note][sales_projection]"]').value}
+Security Systems: ${form.querySelector('[name="customer[note][security_systems]"]').value}
+Security Cameras: ${form.querySelector('[name="customer[note][security_cameras]"]').value}
+Recorders: ${form.querySelector('[name="customer[note][recorders]"]').value}
+Accessories: ${form.querySelector('[name="customer[note][accessories]"]').value}
+Additional Notes: ${form.querySelector('[name="customer[note][additional_notes]"]').value}
+    `.trim();
+
+    form.querySelector('#dealer_note').value = notes;
+  });
+</script> {% endcomment %}
+<script>
+document.getElementById('dealer_register_form').addEventListener('submit', async function (e) {
+  e.preventDefault(); // Prevent page reload/redirect
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      // Hide form and show thank you message
+      form.style.display = 'none';
+      document.getElementById('dealer-success').style.display = 'block';
+    } else {
+      alert('There was an issue submitting the form. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Something went wrong. Please try again later.');
+  }
+});
+</script>
+
+
+<style>
+  .dealer-registration-form input,
+  .dealer-registration-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-top: 4px;
+  }
+
+  .dealer-registration-form label {
+    font-weight: 600;
+    display: block;
+    margin-top: 10px;
+  }
+
+  .dealer-registration-form button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dealer-registration-form button:hover {
+    background-color: #333;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dealer Registration Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title",
+      "default": "Dealer Registration"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dealer Registration Form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "1761578523e26fc1a8": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_Q6rGNQ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div id='aaa-form-builder-wholesale-registration' data-form-id='18749'> </div>  <script> function isMyScriptLoaded() { var url = 'https://shopifycdn.aaawebstore.com/formbuilder/appfiles/aaa_form_builder_script_minify_v1.js?shop=satish-axtrics.myshopify.com'; var jsFound = 0; var scripts = document.getElementsByTagName('script');  for (var i = scripts.length; i--;) { if (scripts[i].src == url) { jsFound = 1; } } if(!jsFound) { var headTag = document.getElementsByTagName('head')[0]; var jqTag = document.createElement('script'); jqTag.type = 'text/javascript'; jqTag.src = url; jqTag.onload = ''; headTag.appendChild(jqTag); } } isMyScriptLoaded(); </script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1761578523e26fc1a8",
+    "custom_liquid_Q6rGNQ"
+  ]
+}
